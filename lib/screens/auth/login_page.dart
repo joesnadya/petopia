@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:petopia/navbar.dart';
 
 import '../../theme.dart';
 import 'register_page.dart';
@@ -168,7 +169,13 @@ class _LoginFormState extends State<LoginForm> {
               child: ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    // Implement login logic
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const NavBar();
+                        },
+                      ),
+                    );
                   }
                 },
                 style: ElevatedButton.styleFrom(

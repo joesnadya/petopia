@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:petopia/screens/auth/login_page.dart';
-import 'package:petopia/screens/auth/register_page.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
