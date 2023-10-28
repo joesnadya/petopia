@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:petopia/screens/in_app/add_petshop.dart';
 import 'package:petopia/screens/in_app/homepage.dart';
 import 'package:petopia/screens/in_app/orders_page.dart';
-import 'package:petopia/screens/in_app/profile_page.dart';
 import 'package:petopia/theme.dart';
 
 class NavBar extends StatefulWidget {
@@ -17,8 +17,10 @@ class _NavBarState extends State<NavBar> {
 
   static final List<Widget> _widgetOptions = <Widget>[
     const HomePage(),
+    const AddPetShopPage(),
     const OrdersPage(),
-    const ProfilePage(),
+
+    // const ProfilePage(),
   ];
 
   void _onItemTap(int index) {
@@ -53,8 +55,8 @@ class _NavBarState extends State<NavBar> {
                 },
               ),
               GButton(
-                icon: Icons.shopping_bag,
-                text: 'Orders',
+                icon: Icons.add_box_rounded,
+                text: 'Add',
                 onPressed: () {
                   setState(() {
                     _selectedIndex = 1;
@@ -62,14 +64,23 @@ class _NavBarState extends State<NavBar> {
                 },
               ),
               GButton(
-                icon: Icons.person,
-                text: 'Profile',
+                icon: Icons.shopping_bag,
+                text: 'Orders',
                 onPressed: () {
                   setState(() {
                     _selectedIndex = 2;
                   });
                 },
               ),
+              // GButton(
+              //   icon: Icons.person,
+              //   text: 'Profile',
+              //   onPressed: () {
+              //     setState(() {
+              //       _selectedIndex = 2;
+              //     });
+              //   },
+              // ),
             ],
           ),
         ),

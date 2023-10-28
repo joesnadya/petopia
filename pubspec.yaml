@@ -38,6 +38,11 @@ dependencies:
   google_fonts: ^6.1.0
   shared_preferences: ^2.2.2
   google_nav_bar: ^5.0.6
+  intl:
+  image_picker: ^0.8.4
+  geolocator: ^10.1.0
+  geocoding:
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:

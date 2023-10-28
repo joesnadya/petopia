@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:petopia/navbar.dart';
+import 'package:petopia/widgets/button_widget.dart';
 
 import '../../theme.dart';
 import 'register_page.dart';
@@ -10,49 +11,53 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 40),
-              SizedBox(
-                height: 250,
-                child: Image.asset(
-                  'assets/illustrasi_4.png',
-                  fit: BoxFit.contain,
-                ),
-              ),
-              const SizedBox(height: 20),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text(
-                    'Login',
-                    style: kTitleOnboarding,
+    return SafeArea(
+      child: Scaffold(
+        body: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(height: 40),
+                SizedBox(
+                  height: 250,
+                  child: Image.asset(
+                    'assets/illustrasi_4.png',
+                    fit: BoxFit.contain,
                   ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text(
-                    'Please login to continue',
-                    style: kSubtitleOnboarding,
-                    maxLines: 3,
+                const SizedBox(height: 20),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Text(
+                      'Login',
+                      style: kTitleOnboarding,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const LoginForm(),
-            ],
+                const SizedBox(height: 10),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Text(
+                      'Please login to continue',
+                      style: kSubtitleOnboarding,
+                      maxLines: 3,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const LoginForm(),
+              ],
+            ),
           ),
         ),
       ),
@@ -111,6 +116,7 @@ class _LoginFormState extends State<LoginForm> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             TextFormField(
               controller: _emailController,
@@ -163,36 +169,20 @@ class _LoginFormState extends State<LoginForm> {
               ),
             ),
             const SizedBox(height: 15),
-            SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return const NavBar();
-                        },
-                      ),
-                    );
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: kPurpleColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+            buttonWidget(
+              context,
+              onTap: () {
+                // if (_formKey.currentState!.validate()) {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const NavBar();
+                    },
                   ),
-                ),
-                child: Text(
-                  'Login',
-                  style: GoogleFonts.poppins(
-                    textStyle: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
+                );
+                // }
+              },
+              textButton: "Login",
             ),
             const SizedBox(height: 10),
             Row(

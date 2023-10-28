@@ -18,6 +18,17 @@ final kSubtitleOnboarding = GoogleFonts.poppins(
   color: kLightBlackColor,
 );
 
+final bodytitle = GoogleFonts.poppins(
+  fontSize: 15,
+  color: kLightBlackColor,
+  fontWeight: FontWeight.bold,
+);
+
+final bodyStyle = GoogleFonts.poppins(
+  fontSize: 13,
+  color: kLightBlackColor,
+);
+
 final kTextButton = GoogleFonts.poppins(
   color: kPurpleColor,
   fontSize: 15,
