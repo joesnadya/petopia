@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:petopia/screens/auth/login_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../theme.dart';
 
@@ -193,10 +194,22 @@ class _RegisterFormState extends State<RegisterForm> {
               width: double.infinity,
               height: 50,
               child: ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   if (_formKey.currentState!.validate()) {
-                    // Implement login logic
+                    final prefs = await SharedPreferences.getInstance();
+                    prefs.setString('name', _nameController.text);
+                    prefs.setString('email', _emailController.text);
+                    prefs.setString('password', _passwordController.text);
                   }
+
+                  // ignore: use_build_context_synchronously
+                  Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const LoginPage();
+                        },
+                      ),
+                    );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: kPurpleColor,
@@ -208,6 +221,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   'Register',
                   style: GoogleFonts.poppins(
                     textStyle: const TextStyle(
+                      color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

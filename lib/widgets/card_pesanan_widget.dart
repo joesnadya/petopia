@@ -31,6 +31,7 @@ class _CardPesananWidgetState extends State<CardPesananWidget> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15.0),
       child: Card(
+        color: Colors.white,
         elevation: 5,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),

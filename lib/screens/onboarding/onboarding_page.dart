@@ -39,12 +39,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
     seenOnboard = await prefs.setBool('seenOnboard', true);
   }
 
-  @override
-  void initState() {
-    super.initState();
-    // calll setSeenOnboarding() here
-    setSeenOnboarding();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   // calll setSeenOnboarding() here
+  //   setSeenOnboarding();
+  // }
 
   @override
   Widget build(BuildContext context) {

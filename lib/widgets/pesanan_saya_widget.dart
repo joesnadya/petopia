@@ -1,8 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:petopia/models/order_item.dart';
-import 'package:petopia/widgets/button_widget.dart';
 import 'package:petopia/widgets/card_pesanan_widget.dart';
-import 'package:petopia/widgets/rating_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PesananSayaWidget extends StatefulWidget {
   final List<OrderItem> listPesananSaya;
@@ -13,17 +14,36 @@ class PesananSayaWidget extends StatefulWidget {
 }
 
 class _PesananSayaWidgetState extends State<PesananSayaWidget> {
+  List<OrderItem> listPesananSaya = [];
+
+  @override
+  void initState() {
+    super.initState();
+    getSavedOrders();
+  }
+
+  Future<void> getSavedOrders() async {
+    final prefs = await SharedPreferences.getInstance();
+    final orderItemJsonList = prefs.getStringList('orders') ?? [];
+
+    for (final orderItemJson in orderItemJsonList) {
+      final orderItem = OrderItem.fromJson(
+          Map<String, dynamic>.from(jsonDecode(orderItemJson)));
+      listPesananSaya.add(orderItem);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       padding: const EdgeInsets.symmetric(vertical: 15),
-      itemCount: widget.listPesananSaya.length,
+      itemCount: listPesananSaya.length,
       itemBuilder: (context, index) {
-        var data = widget.listPesananSaya[index];
+        final orderJson = listPesananSaya[index];
 
-        bool onFinish = false;
+        // bool onFinish = false;
         return CardPesananWidget(
-          dataOrder: data,
+          dataOrder: orderJson,
           textButton: "Pelayanan Selesai",
         );
       },

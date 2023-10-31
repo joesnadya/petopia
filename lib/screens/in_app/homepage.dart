@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:petopia/screens/in_app/chatbot.dart';
 import 'package:petopia/screens/in_app/detail_petshop.dart';
 import 'package:petopia/screens/in_app/profile_page.dart';
 import 'package:petopia/theme.dart';
 
 import 'package:petopia/models/petshop_model.dart';
 import 'package:petopia/utils/list_petshop.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -45,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         IconButton(
                           icon: const Icon(
-                            Icons.shopping_cart,
+                            Icons.chat_rounded,
                             color: kPurpleColor,
                           ),
                           onPressed: () {},
@@ -92,7 +94,25 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Text("Hello", style: kSubtitleOnboarding),
                             const SizedBox(width: 3),
-                            Text("Username", style: kTitleOnboarding),
+                            FutureBuilder<String?>(
+                              future: SharedPreferences.getInstance()
+                                  .then((prefs) => prefs.getString('name')),
+                              builder: (context, snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return const CircularProgressIndicator();
+                                } else if (snapshot.hasError) {
+                                  return Text('Error: ${snapshot.error}');
+                                } else if (snapshot.hasData &&
+                                    snapshot.data != null) {
+                                  return Text(snapshot.data!,
+                                      style: kTitleOnboarding);
+                                } else {
+                                  return Text("Username",
+                                      style: kTitleOnboarding);
+                                }
+                              },
+                            ),
                           ],
                         ),
                         const SizedBox(height: 10),
@@ -148,6 +168,28 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ],
+            ),
+          ),
+        ),
+      ),
+      floatingActionButton: SizedBox(
+        width: 150,
+        height: 50,
+        child: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ChatBotScreen(),
+              ),
+            );
+          },
+          backgroundColor: kPurpleColor,
+          child: const Text(
+            'CHAT BOT HERE',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:petopia/navbar.dart';
 import 'package:petopia/widgets/button_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../main.dart';
 import '../../theme.dart';
 import 'register_page.dart';
 
@@ -171,16 +173,44 @@ class _LoginFormState extends State<LoginForm> {
             const SizedBox(height: 15),
             buttonWidget(
               context,
-              onTap: () {
-                // if (_formKey.currentState!.validate()) {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const NavBar();
-                    },
-                  ),
-                );
-                // }
+              onTap: () async {
+                if (_formKey.currentState!.validate()) {
+                  final prefs = await SharedPreferences.getInstance();
+                  final savedEmail = prefs.getString('email');
+                  final savedPassword = prefs.getString('password');
+
+                  if (savedEmail == _emailController.text &&
+                      savedPassword == _passwordController.text) {
+                    // ignore: use_build_context_synchronously
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const NavBar();
+                        },
+                      ),
+                    );
+                  } else {
+                    // ignore: use_build_context_synchronously
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: const Text("Invalid Credentials"),
+                            content: const Text(
+                                "Your credentials are wrong, please try again."),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context)
+                                      .pop(); // Close the dialog
+                                },
+                                child: const Text("OK"),
+                              ),
+                            ],
+                          );
+                        });
+                  }
+                }
               },
               textButton: "Login",
             ),

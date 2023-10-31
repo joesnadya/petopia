@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:petopia/screens/in_app/pesanan_masuk_widget.dart';
-import 'package:petopia/screens/in_app/pesanan_saya_widget.dart';
+import 'package:petopia/widgets/pesanan_masuk_widget.dart';
+import 'package:petopia/widgets/pesanan_saya_widget.dart';
 import 'package:petopia/theme.dart';
 import 'package:petopia/utils/list_petshop.dart';
 

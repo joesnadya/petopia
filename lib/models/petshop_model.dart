@@ -26,6 +26,7 @@ class PetShop extends StatelessWidget {
         width: 300,
         margin: const EdgeInsets.all(10),
         child: Card(
+          color: Colors.white,
           elevation: 5,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),

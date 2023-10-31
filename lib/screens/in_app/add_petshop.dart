@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'dart:io';
+import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
@@ -61,6 +63,33 @@ class _AddPetShopPageState extends State<AddPetShopPage> {
         isComplete = false;
       });
     }
+  }
+
+  final String _baseUrl =
+      "https://emsifa.github.io/api-wilayah-indonesia/api/provinces.json";
+  String? _selectedProvinceId;
+  String _selectedProvinceName = "Select Province";
+  List<Map<String, dynamic>> _dataProvince = [];
+
+  void getProvince() async {
+    final response = await http.get(Uri.parse(_baseUrl));
+
+    if (response.statusCode == 200) {
+      var listData = jsonDecode(response.body);
+      setState(() {
+        _dataProvince = List<Map<String, dynamic>>.from(listData);
+      });
+      print("data : $listData");
+    } else {
+      // Handle the case where the API returned an error
+      print("API Error: ${response.statusCode}");
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getProvince();
   }
 
   @override
@@ -134,6 +163,41 @@ class _AddPetShopPageState extends State<AddPetShopPage> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                       borderSide: const BorderSide(color: kLightBlackColor),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                    child: DropdownButton<String>(
+                      hint: Text(_selectedProvinceName),
+                      value: _selectedProvinceId,
+                      underline: Container(),
+                      items: _dataProvince.map((item) {
+                        return DropdownMenuItem<String>(
+                          value: item['id'].toString(),
+                          child: Text(item['name']),
+                        );
+                      }).toList(),
+                      onChanged: (String? value) {
+                        final selectedProvince = _dataProvince.firstWhere(
+                          (item) => item['id'].toString() == value,
+                          orElse: () => {'name': "Select Province", 'id': -1},
+                        );
+                        setState(() {
+                          _selectedProvinceId = value;
+                          _selectedProvinceName = selectedProvince['name'];
+                        });
+                      },
                     ),
                   ),
                 ),
