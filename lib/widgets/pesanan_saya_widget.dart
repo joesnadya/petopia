@@ -33,6 +33,17 @@ class _PesananSayaWidgetState extends State<PesananSayaWidget> {
     }
   }
 
+  // Future<void> removeOrderFromSharedPreferences(int index) async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   final orderItemJsonList = prefs.getStringList('orders') ?? [];
+
+  //   // Remove the order at the specified index
+  //   if (index >= 0 && index < orderItemJsonList.length) {
+  //     orderItemJsonList.removeAt(index);
+  //     await prefs.setStringList('orders', orderItemJsonList);
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -45,6 +56,13 @@ class _PesananSayaWidgetState extends State<PesananSayaWidget> {
         return CardPesananWidget(
           dataOrder: orderJson,
           textButton: "Pelayanan Selesai",
+          //  ontapButton: () {
+          //   // Add code to remove the order when the "Pelayanan Selesai" button is pressed.
+          //   removeOrderFromSharedPreferences(index);
+          //   setState(() {
+          //     listPesananSaya.removeAt(index);
+          //   });
+          // },
         );
       },
     );

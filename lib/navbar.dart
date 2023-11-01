@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:petopia/screens/in_app/add_petshop.dart';
+import 'package:petopia/screens/in_app/chatbot.dart';
 import 'package:petopia/screens/in_app/homepage.dart';
 import 'package:petopia/screens/in_app/orders_page.dart';
 import 'package:petopia/theme.dart';
@@ -17,7 +17,7 @@ class _NavBarState extends State<NavBar> {
 
   static final List<Widget> _widgetOptions = <Widget>[
     const HomePage(),
-    const AddPetShopPage(),
+    const ChatBotScreen(),
     const OrdersPage(),
 
     // const ProfilePage(),

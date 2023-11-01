@@ -96,6 +96,18 @@ class _AddPetShopPageState extends State<AddPetShopPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          iconTheme: const IconThemeData(
+            color: Colors.white,
+          ),
+          backgroundColor: kPurpleColor,
+          title: const Text(
+            "Tambah Pet Shop Anda",
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ),
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -104,13 +116,11 @@ class _AddPetShopPageState extends State<AddPetShopPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "Tambah Pet Shop Anda",
-                  style: bodytitle,
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
+                // Text(
+                //   "Tambah Pet Shop Anda",
+                //   style: bodytitle,
+                // ),
+                const SizedBox(height: 20),
                 InkWell(
                   onTap: () {
                     pickImageFromGallery(
@@ -177,7 +187,8 @@ class _AddPetShopPageState extends State<AddPetShopPage> {
                     border: Border.all(color: Colors.grey),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 10),
                     child: DropdownButton<String>(
                       hint: Text(_selectedProvinceName),
                       value: _selectedProvinceId,

@@ -23,6 +23,7 @@ class PetShop extends StatelessWidget {
     return InkWell(
       onTap: onTapDetail,
       child: Container(
+        color: Colors.white,
         width: 300,
         margin: const EdgeInsets.all(10),
         child: Card(

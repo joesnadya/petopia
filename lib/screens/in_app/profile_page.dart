@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:petopia/screens/in_app/add_petshop.dart';
 import 'package:petopia/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -111,7 +112,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                         ],
                       ),
-                      const Icon(Icons.edit, color: Colors.white)
+                      const Icon(Icons.edit, color: Colors.white),
                     ],
                   ),
                 ),
@@ -165,6 +166,61 @@ class _ProfilePageState extends State<ProfilePage> {
                           ],
                         ),
                         const Icon(Icons.navigate_next_rounded),
+                      ],
+                    ),
+                    const SizedBox(height: 15),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              width: 35,
+                              height: 35,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: kYellowColor,
+                              ),
+                              child: const Center(
+                                child: Icon(
+                                  Icons.add_business_rounded,
+                                  color: Colors.white,
+                                  size: 18,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Add Petshop',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                Text(
+                                  'Add your own petshop',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 13, color: kLightBlackColor),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        // const Icon(Icons.navigate_next_rounded),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const AddPetShopPage();
+                                },
+                              ),
+                            );
+                          },
+                          child: const Icon(Icons.navigate_next_rounded),
+                        )
                       ],
                     ),
                     const SizedBox(height: 15),

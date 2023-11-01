@@ -34,9 +34,7 @@ class _DetailPetShopPageState extends State<DetailPetShopPage> {
                 height: 300,
                 fit: BoxFit.cover,
               ),
-              const SizedBox(
-                height: 25,
-              ),
+              const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.fromLTRB(18, 25, 18, 20),
                 child: Column(

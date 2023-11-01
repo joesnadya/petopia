@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:petopia/env/env.dart';
 import 'package:petopia/widgets/button_widget.dart';
 import 'package:http/http.dart' as http;
 
@@ -52,7 +53,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
       setState(() {
         _isLoading = true; 
       });
-      const apiKey = ''; 
+      String apiKey = Env.apiKey; 
       final prompt = _textEditingController.text;
 
       final response = await generateResponse(apiKey, prompt);
@@ -67,9 +68,10 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: const IconThemeData(
-          color: Colors.white,
-        ),
+        // iconTheme: const IconThemeData(
+        //   color: Colors.white,
+        // ),
+        automaticallyImplyLeading: false,
         backgroundColor: kPurpleColor,
         title: const Text(
           'Chat Bot',
@@ -83,6 +85,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
         child: Form(
           key: _formKey,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextFormField(
                 controller: _textEditingController,

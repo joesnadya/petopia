@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:petopia/screens/in_app/add_petshop.dart';
 import 'package:petopia/screens/in_app/chatbot.dart';
 import 'package:petopia/screens/in_app/detail_petshop.dart';
 import 'package:petopia/screens/in_app/profile_page.dart';
@@ -172,28 +173,28 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      floatingActionButton: SizedBox(
-        width: 150,
-        height: 50,
-        child: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const ChatBotScreen(),
-              ),
-            );
-          },
-          backgroundColor: kPurpleColor,
-          child: const Text(
-            'CHAT BOT HERE',
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ),
+      // floatingActionButton: SizedBox(
+      //   width: 150,
+      //   height: 50,
+      //   child: FloatingActionButton(
+      //     onPressed: () {
+      //       Navigator.push(
+      //         context,
+      //         MaterialPageRoute(
+      //           builder: (context) => const ChatBotScreen(),
+      //         ),
+      //       );
+      //     },
+      //     backgroundColor: kPurpleColor,
+      //     child: const Text(
+      //       'CHAT BOT HERE',
+      //       style: TextStyle(
+      //         color: Colors.white,
+      //         fontWeight: FontWeight.bold,
+      //       ),
+      //     ),
+      //   ),
+      // ),
     );
   }
 

@@ -3,7 +3,7 @@ import 'package:petopia/models/petshop_item.dart';
 import 'package:petopia/models/service_model.dart';
 
 String description =
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+    "Selamat datang di Pet Shop Kalisari, destinasi utama untuk perawatan hewan peliharaan yang profesional dan kasih sayang tak terbatas. Kami adalah tujuan terpercaya bagi Anda yang mencintai hewan peliharaan Anda sebanyak keluarga..";
 
 List<ServicePetshop> services = [
   ServicePetshop(
@@ -26,8 +26,8 @@ List<ServicePetshop> services = [
 
 List<PetShopItem> listPetShop = [
   PetShopItem(
-      petshopImage: 'assets/bed.png',
-      petshopName: 'Petshop Iyaiya',
+      petshopImage: 'assets/petshop.jpg',
+      petshopName: 'Petshop Kalisari',
       petshopAddress: 'Jalan Rambutan 2, Jakarta Selatan, Indonesia',
       rating: 2,
       petshopDesc: description,
@@ -36,8 +36,8 @@ List<PetShopItem> listPetShop = [
         services[3],
       ]),
   PetShopItem(
-      petshopImage: 'assets/bone.png',
-      petshopName: 'Petshop Kamu',
+      petshopImage: 'assets/petshop_2.jpeg',
+      petshopName: 'Kitty Pet Shop',
       petshopAddress: 'Jalan Moh.Gobil 15, Jakarta Timur, Indonesia',
       rating: 4,
       petshopDesc: description,
@@ -72,7 +72,7 @@ List<PetShopItem> listPetShop = [
   PetShopItem(
       petshopImage: 'assets/bone.png',
       petshopName: 'Akang Petshop',
-      petshopAddress: 'Jalan Aing Maung 666, Depok, Indonesia',
+      petshopAddress: 'Jalan Lembah Hijau 666, Depok, Indonesia',
       rating: 3,
       petshopDesc: description,
       services: [
@@ -123,7 +123,7 @@ List<OrderItem> listPesananMasuk = [
   OrderItem(
       petshopImage: '',
       orderame: 'Akang Petshop',
-      orderAddress: 'Jalan Aing Maung 666, Depok, Indonesia',
+      orderAddress: 'Jalan Lembah Hijau 666, Depok, Indonesia',
       rating: 3,
       totalBiaya: 155000,
       services: [
