@@ -55,8 +55,8 @@ class _NavBarState extends State<NavBar> {
                 },
               ),
               GButton(
-                icon: Icons.add_box_rounded,
-                text: 'Add',
+                icon: Icons.chat,
+                text: 'Chatbot',
                 onPressed: () {
                   setState(() {
                     _selectedIndex = 1;

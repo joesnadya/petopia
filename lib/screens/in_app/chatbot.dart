@@ -51,9 +51,9 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
   Future<void> _submitForm() async {
     if (_formKey.currentState!.validate()) {
       setState(() {
-        _isLoading = true; 
+        _isLoading = true;
       });
-      String apiKey = Env.apiKey; 
+      String apiKey = Env.apiKey;
       final prompt = _textEditingController.text;
 
       final response = await generateResponse(apiKey, prompt);
@@ -104,10 +104,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                 textButton: 'ASK CHAT BOT',
               ),
               const SizedBox(height: 20),
-              // if (_isLoading)
-              //   const CircularProgressIndicator() 
-              // else
-                Text('Response: $_response'), 
+              Text('Response: $_response'),
             ],
           ),
         ),

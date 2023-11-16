@@ -12,21 +12,21 @@ class OnBoarding {
 
 List<OnBoarding> onboardingContents = [
   OnBoarding(
-    title: 'Get notified when\nwork happens',
+    title: 'Welcome to \npetopia',
     subtitle:
-        'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
+        'Pamper Your Pets with Professional Grooming Services',
     image: 'assets/illustrasi_1.png',
   ),
   OnBoarding(
-    title: 'Stay organized with\nproject and team',
+    title: 'Keep your pet cleans with\nexpert groomers',
     subtitle:
-        'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
+        'Trust Our Experienced Groomers for Your Pets Care',
     image: 'assets/illustrasi_2.png',
   ),
   OnBoarding(
-    title: 'Create tasks and\nassign them ',
+    title: 'Create orders and\nassign them ',
     subtitle:
-        'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
+        'Schedule Grooming Appointments with a Few Taps',
     image: 'assets/illustrasi_3.png',
   ),
   // OnBoarding(
